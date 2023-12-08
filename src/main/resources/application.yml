@@ -1,0 +1,18 @@
+# server
+server:
+  port: 8080 # default
+
+spring:
+#  profiles:
+#    location: local
+  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: # 직접 입력
+    password: # 직접 입력
+    url: jdbc:mariadb://3.36.218.160:3306/bside?allowMultiQueries=true
+
+# Mybatis
+mybatis:
+  type-aliases-package: com.be.poten.domain
+  mapper-locations: mapper/*.xml
