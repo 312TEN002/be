@@ -22,4 +22,11 @@ public class TestController {
         result.put("result", testService.getTestData());
         return ResponseEntity.ok().body(result);
     }
+
+    @GetMapping(value = "/clova")
+    public ResponseEntity<?> getClovaData() {
+        HashMap<String, String> result = new HashMap<>();
+        result.put("result", testService.postTest());
+        return ResponseEntity.ok().body(result);
+    }
 }

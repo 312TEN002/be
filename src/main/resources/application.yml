@@ -10,7 +10,7 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     username: # 직접 입력
     password: # 직접 입력
-    url: jdbc:mariadb://3.36.218.160:3306/newsquick?allowMultiQueries=true
+    url: jdbc:mariadb://3.36.218.160:3306/potenday?allowMultiQueries=true
 
 # Mybatis
 mybatis:
