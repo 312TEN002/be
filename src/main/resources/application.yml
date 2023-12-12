@@ -2,15 +2,20 @@
 server:
   port: 8080 # default
 
+# jasypt (암호화)
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    password: #TODO: 외부에서 암호 주입 필요
+
 spring:
 #  profiles:
 #    location: local
   datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
     driver-class-name: org.mariadb.jdbc.Driver
-    username: # 직접 입력
-    password: # 직접 입력
-    url: jdbc:mariadb://3.36.218.160:3306/potenday?allowMultiQueries=true
+    username: ENC(0U8kjxbUALGpt7iJ3ESX6w==)
+    password: ENC(6kfPXxVaR3M4VgfEnzv/Rg==)
+    url: ENC(MntShJb3r7KeTw3g6LDufbpMt6x3R+CwuUMV3QIw0Ewd4MPkBo1MVS1c06tvfBKJjRwp2TcBGHiPjpfqjjZninPIPyoaCifL3OWOsMGxXXI=)
 
 # Mybatis
 mybatis:
