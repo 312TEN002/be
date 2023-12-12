@@ -6,7 +6,7 @@ server:
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
-    password: #TODO: 외부에서 암호 주입 필요
+    password: potenday312!
 
 spring:
 #  profiles:
