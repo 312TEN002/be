@@ -22,4 +22,12 @@ public class MessageController {
         result.put("result", messageService.executeAndGetMessage(message));
         return ResponseEntity.ok().body(result);
     }
+
+    @PostMapping(value = "/api/clova-study")
+    public ResponseEntity<?> executeClovaStudy() throws Exception {
+//        HashMap<String, String> result = new HashMap<>();
+//        result.put("result", );
+        messageService.executeClovaStudy();
+        return ResponseEntity.ok().build();
+    }
 }
