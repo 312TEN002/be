@@ -109,7 +109,7 @@ public class MessageService {
             // [축사자 이름], [대상자 이름] replace
             content = content.replaceAll("\\[축사자 이름\\]", message.getUserName());
             content = content.replaceAll("\\[대상자 이름\\]", message.getTargetName());
-            content = content.replaceAll("\\*","").replaceAll("\\[축사 시작\\]","").replaceAll("\\[축사 종료\\]","").replaceAll("제목:","");
+            content = content.replaceAll("\\*","").replaceAll("축사 시작","").replaceAll("축사 종료","").replaceAll("제목:","").replaceAll("\\[","").replaceAll("\\]","");
 
             log.info("축사 응답 데이터: " + content);
 
