@@ -2,7 +2,8 @@
 server:
   port: 443 # SSL
   ssl:
-    key-store: classpath:src/main/resources/ssl/keystore.p12
+    key-store: src/main/resources/ssl/keystore.p12
+
     key-store-type: PKCS12
     key-store-password: potenday312!
 
