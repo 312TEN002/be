@@ -1,11 +1,12 @@
 # server
 server:
-  port: 443 # SSL
-  ssl:
-    key-store: classpath:ssl/keystore.p12
-
-    key-store-type: PKCS12
-    key-store-password: potenday312!
+  port: 8080
+#  port: 443 # SSL
+#  ssl:
+#    enabled: true
+#    key-store: classpath:ssl/keystore.p12
+#    key-store-type: PKCS12
+#    key-store-password: potenday312!
 
 # jasypt (암호화)
 jasypt:
