@@ -1,6 +1,10 @@
 # server
 server:
   port: 8080 # default
+  ssl:
+    key-store: classpath:ssl/keystore.p12
+    key-store-type: PKCS12
+    key-store-password: potenday312!
 
 # jasypt (암호화)
 jasypt:
