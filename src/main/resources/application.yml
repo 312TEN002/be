@@ -1,6 +1,6 @@
 # server
 server:
-  port: 8080 # default
+  port: 443 # SSL
   ssl:
     key-store: classpath:ssl/keystore.p12
     key-store-type: PKCS12
