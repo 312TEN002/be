@@ -13,6 +13,6 @@ public class MessageRequestDto {
     private String story;
     private String speechType;
     private String lastComment;
-    private Integer minute;
+    private String minute;
 
 }

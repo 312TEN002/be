@@ -53,7 +53,7 @@ public class MessageService {
         sb.append("\n- 축사에 들어갈 스토리텔링: " + message.getStory());
         sb.append("\n- 말투: " + message.getSpeechType());
         sb.append("\n- 마지막으로 해주고 싶은 말: " + message.getLastComment());
-        sb.append("\n- 축사 진행 시간: " + message.getMinute() + "분");
+        sb.append("\n- 축사 진행 시간: " + message.getMinute());
         sb.append("\n- 최대 글자수: " + "1000자");
 
         return sb.toString();
@@ -80,21 +80,21 @@ public class MessageService {
 
         HttpHeaders headers = new HttpHeaders();
         /* 학습 */
-//        headers.set("X-NCP-CLOVASTUDIO-API-KEY", "NTA0MjU2MWZlZTcxNDJiY6LZd16S3lGRquDQ755+lODwkGu6Ue38A7hxsmmUpq4FftKdv/cXC7UAMEZCtJStq99tXgHVzmVUXKxgiuo8TS/CEdidD0bcFucaJKtw0OTKYOP8Mjh57nEIMzoDFYrt+ddcQM8UdpNQ4v3T5c8q/SJ7P/KeRKHEfnmFPlMBdBV5BkY/2hkXshroMxKBibtPTA==");
-//        headers.set("X-NCP-APIGW-API-KEY", "CNRSgHB8UsB0ReR29fU3NqjG8XRfWvifgKOhu6JY");
-        /* 일반 */
-        headers.set("X-NCP-CLOVASTUDIO-API-KEY", "NTA0MjU2MWZlZTcxNDJiYzQNPMHi/Vt8f/jUw+uD7CxTg8NfmaRlPXQoigyeublY7eVnylTxPL1vEyeFjZDwRkkqeiMSeAXfdB1q9+QTAs9Z4BA6CjvC9odNIFkcQ2l6GU2dPPD8l70WoKJ7nOewsdU6Key8/+plx3IVU/6g6hv0JXRjZf89oC384tCoyzfO+IcQ6Mjw00pJLaaBRSr53bQ0lNhdj3GWf4bDr7u1aV0=");
+        headers.set("X-NCP-CLOVASTUDIO-API-KEY", "NTA0MjU2MWZlZTcxNDJiY6LZd16S3lGRquDQ755+lODwkGu6Ue38A7hxsmmUpq4FftKdv/cXC7UAMEZCtJStq99tXgHVzmVUXKxgiuo8TS/CEdidD0bcFucaJKtw0OTKYOP8Mjh57nEIMzoDFYrt+ddcQM8UdpNQ4v3T5c8q/SJ7P/KeRKHEfnmFPlMBdBV5BkY/2hkXshroMxKBibtPTA==");
         headers.set("X-NCP-APIGW-API-KEY", "CNRSgHB8UsB0ReR29fU3NqjG8XRfWvifgKOhu6JY");
+        /* 일반 */
+//        headers.set("X-NCP-CLOVASTUDIO-API-KEY", "NTA0MjU2MWZlZTcxNDJiYzQNPMHi/Vt8f/jUw+uD7CxTg8NfmaRlPXQoigyeublY7eVnylTxPL1vEyeFjZDwRkkqeiMSeAXfdB1q9+QTAs9Z4BA6CjvC9odNIFkcQ2l6GU2dPPD8l70WoKJ7nOewsdU6Key8/+plx3IVU/6g6hv0JXRjZf89oC384tCoyzfO+IcQ6Mjw00pJLaaBRSr53bQ0lNhdj3GWf4bDr7u1aV0=");
+//        headers.set("X-NCP-APIGW-API-KEY", "CNRSgHB8UsB0ReR29fU3NqjG8XRfWvifgKOhu6JY");
 
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity formEntity = new HttpEntity<>(clovaRequest, headers);
 
         /* 학습 */
-//        String apiUrl = "https://clovastudio.stream.ntruss.com/testapp/v1/tasks/lmgwbobq/chat-completions";
+        String apiUrl = "https://clovastudio.stream.ntruss.com/testapp/v1/tasks/lmgwbobq/chat-completions";
 
         /* 일반 */
-        String apiUrl = "https://clovastudio.stream.ntruss.com/testapp/v1/chat-completions/HCX-002";
+//        String apiUrl = "https://clovastudio.stream.ntruss.com/testapp/v1/chat-completions/HCX-002";
 
         LinkedHashMap resMap = template.postForObject(apiUrl, formEntity, LinkedHashMap.class);
 
