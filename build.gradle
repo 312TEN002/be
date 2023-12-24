@@ -15,10 +15,6 @@ jar {
     enabled = false // plain 파일 미생성
 }
 
-bootJar {
-    mainClassName = 'PotenApplication'
-}
-
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
