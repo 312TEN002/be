@@ -6,7 +6,7 @@ server:
     enabled: true
     key-store: classpath:keystore.p12
     key-store-type: PKCS12
-    key-store-password: potenday312!
+    key-store-password: ENC(YCvDgaLhZx6D8nU3kNaAt2E11YkBlhnX)
 
 # jasypt (암호화)
 jasypt:
