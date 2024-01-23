@@ -2,9 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.be.poten.mapper.MessageMapper">
 
-    <insert id="insertMessage">
+    <insert id="insertMessage" parameterType="com.be.poten.domain.Message" useGeneratedKeys="true" keyProperty="messageId" keyColumn="message_id">
         insert into message (user_id, param_data, result_data)
         values (null, #{paramData}, #{resultData});
     </insert>
+
+    <select id="getMessage" resultType="com.be.poten.dto.message.GetMessageResponseDto">
+        select message_id as messageId,
+               reg_date as regDate,
+               result_data as resultData
+        from message
+        where message_id = #{messageId};
+    </select>
 
 </mapper>

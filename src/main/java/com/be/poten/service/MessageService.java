@@ -5,6 +5,8 @@ import com.be.poten.dto.ClovaRequestDto.ClovaRequest;
 import com.be.poten.dto.ClovaRequestDto.ClovaRequestMessage;
 import com.be.poten.dto.ClovaRequestDto.ClovaStudyRequest;
 import com.be.poten.dto.message.MessageRequestDto;
+import com.be.poten.dto.message.GetMessageResponseDto;
+import com.be.poten.dto.message.PostMessageResponseDto;
 import com.be.poten.mapper.MessageMapper;
 import com.be.poten.utils.SignitureUtils;
 import lombok.RequiredArgsConstructor;
@@ -29,11 +31,18 @@ public class MessageService {
     private final MessageMapper messageMapper;
 
     @Transactional
-    public String executeAndGetMessage(MessageRequestDto message) {
+    public PostMessageResponseDto executeAndGetMessage(MessageRequestDto message) {
+        // 문장 생성
         String clovaContent = transMessageToClovaContent(message);
         String result = postClova(message, clovaContent);
-        insertMessage(Message.MessageOf(message, result));
-        return result;
+
+        // 생성 문장 저장
+        Message messageEntity = Message.MessageOf(message, result);
+        insertMessage(messageEntity);
+
+        // 응답
+        PostMessageResponseDto res = PostMessageResponseDto.PostMessageResponseDtoOf(messageEntity);
+        return res;
     }
 
     /**
@@ -171,4 +180,7 @@ public class MessageService {
 
     }
 
+    public GetMessageResponseDto getMessage(String messageId) {
+        return messageMapper.getMessage(messageId);
+    }
 }

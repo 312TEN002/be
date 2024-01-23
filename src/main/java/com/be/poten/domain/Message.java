@@ -9,12 +9,12 @@ import lombok.Data;
 @AllArgsConstructor
 public class Message {
 
+    private String messageId;
     private String userId;
     private String paramData;
     private String resultData;
 
     public static Message MessageOf(MessageRequestDto message, String result) {
-        return new Message(null, JsonUtils.toJson(message), result);
+        return new Message(null,null, JsonUtils.toJson(message), result);
     }
-
 }
