@@ -45,7 +45,7 @@ public class ApiResponse<T> {
         return success(null, message);
     }
 
-    public static <T> ApiResponse<T> error(T data, String message, String code) {
+    public static <T> ApiResponse<T> fail(T data, String message, String code) {
         return (ApiResponse<T>) ApiResponse.builder()
                 .status(Status.ERROR)
                 .code(code)
@@ -55,7 +55,7 @@ public class ApiResponse<T> {
                 .build();
     }
 
-    public static <T> ApiResponse<T> error(String message, String code) {
+    public static <T> ApiResponse<T> fail(String message, String code) {
         return (ApiResponse<T>) ApiResponse.builder()
                 .status(Status.ERROR)
                 .code(code)
@@ -64,7 +64,7 @@ public class ApiResponse<T> {
                 .build();
     }
 
-    public static <T> ApiResponse<T> error(String code) {
+    public static <T> ApiResponse<T> fail(String code) {
         return (ApiResponse<T>) ApiResponse.builder()
                 .status(Status.ERROR)
                 .code(code)
@@ -73,7 +73,7 @@ public class ApiResponse<T> {
     }
 
     // Validator에 의해 유효하지 않은 데이터로 인해 API 호출이 거부될때 반환
-    public static <T> ApiResponse<T> fail(BindingResult bindingResult) {
+    public static <T> ApiResponse<T> fieldError(BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
 
         List<ObjectError> allErrors = bindingResult.getAllErrors();
@@ -85,10 +85,20 @@ public class ApiResponse<T> {
             }
         }
         return (ApiResponse<T>) ApiResponse.builder()
-                .status(Status.SUCCESS)
+                .status(Status.FAIL)
                 .code("400")
-                .message("데이터 유효성 오류 입니다.")
+                .message("데이터 유효성 검사 실패 했습니다.")
                 .data(errors)
+                .timestamp(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()))
+                .build();
+    }
+
+    public static <T> ApiResponse<T> fieldError(T data, String message, String code) {
+        return (ApiResponse<T>) ApiResponse.builder()
+                .status(Status.FAIL)
+                .code(code)
+                .message(message)
+                .data(data)
                 .timestamp(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()))
                 .build();
     }
