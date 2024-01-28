@@ -29,7 +29,7 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler(value = BaseException.class)
     public ApiResponse baseException(BaseException e) {
         log.warn("[BaseException] cause >>> {}, errorMsg >>> {}", NestedExceptionUtils.getMostSpecificCause(e), NestedExceptionUtils.getMostSpecificCause(e).getMessage());
-        return ApiResponse.fail(String.valueOf(HttpStatus.BAD_REQUEST.value()));
+        return ApiResponse.fail(e.getMessage(), String.valueOf(HttpStatus.BAD_REQUEST.value()));
     }
 
     /**
@@ -62,8 +62,8 @@ public class ExceptionHandlerAdvice {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = Exception.class)
     public ApiResponse onException(Exception e) {
-        log.error("[SeverErrorException] errorMsg >>> {} ", e.getMessage());
-        return ApiResponse.fail(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        log.error("[SeverErrorException] errorMsg >>> {} ", e.toString());
+        return ApiResponse.fail( String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
     }
 
 }
