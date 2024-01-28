@@ -63,7 +63,7 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler(value = Exception.class)
     public ApiResponse onException(Exception e) {
         log.error("[SeverErrorException] errorMsg >>> {} ", e.toString());
-        return ApiResponse.fail( String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        return ApiResponse.fail(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
     }
 
 }
