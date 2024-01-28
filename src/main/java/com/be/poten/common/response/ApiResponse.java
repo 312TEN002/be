@@ -21,7 +21,6 @@ public class ApiResponse<T> {
     private String code;
     private String message;
     private T data;
-    private String timestamp;
 
     public static <T> ApiResponse<T> success(T data, String message) {
         return (ApiResponse<T>) ApiResponse.builder()
@@ -29,7 +28,6 @@ public class ApiResponse<T> {
                 .code("200")
                 .message(message)
                 .data(data)
-                .timestamp(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()))
                 .build();
     }
 
@@ -51,7 +49,6 @@ public class ApiResponse<T> {
                 .code(code)
                 .message(message)
                 .data(data)
-                .timestamp(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()))
                 .build();
     }
 
@@ -60,7 +57,6 @@ public class ApiResponse<T> {
                 .status(Status.ERROR)
                 .code(code)
                 .message(message)
-                .timestamp(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()))
                 .build();
     }
 
@@ -68,7 +64,6 @@ public class ApiResponse<T> {
         return (ApiResponse<T>) ApiResponse.builder()
                 .status(Status.ERROR)
                 .code(code)
-                .timestamp(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()))
                 .build();
     }
 
@@ -89,7 +84,6 @@ public class ApiResponse<T> {
                 .code("400")
                 .message("데이터 유효성 검사 실패 했습니다.")
                 .data(errors)
-                .timestamp(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()))
                 .build();
     }
 
@@ -99,7 +93,6 @@ public class ApiResponse<T> {
                 .code(code)
                 .message(message)
                 .data(data)
-                .timestamp(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()))
                 .build();
     }
 
