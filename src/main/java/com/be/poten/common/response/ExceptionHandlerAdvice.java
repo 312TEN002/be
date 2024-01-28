@@ -28,7 +28,7 @@ public class ExceptionHandlerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = BaseException.class)
     public ApiResponse baseException(BaseException e) {
-        log.error("[BaseException] cause >>> {}, errorMsg >>> {}", NestedExceptionUtils.getMostSpecificCause(e), NestedExceptionUtils.getMostSpecificCause(e).getMessage());
+        log.warn("[BaseException] cause >>> {}, errorMsg >>> {}", NestedExceptionUtils.getMostSpecificCause(e), NestedExceptionUtils.getMostSpecificCause(e).getMessage());
         return ApiResponse.fail(String.valueOf(HttpStatus.BAD_REQUEST.value()));
     }
 
