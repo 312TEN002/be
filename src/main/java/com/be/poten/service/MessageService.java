@@ -1,9 +1,11 @@
 package com.be.poten.service;
 
+import com.be.poten.common.exception.BaseException;
 import com.be.poten.domain.Message;
 import com.be.poten.dto.ClovaRequestDto.ClovaRequest;
 import com.be.poten.dto.ClovaRequestDto.ClovaRequestMessage;
 import com.be.poten.dto.ClovaRequestDto.ClovaStudyRequest;
+import com.be.poten.dto.ClovaRequestDto.PostClovaResponseDto;
 import com.be.poten.dto.message.MessageRequestDto;
 import com.be.poten.dto.message.GetMessageResponseDto;
 import com.be.poten.dto.message.PostMessageResponseDto;
@@ -34,7 +36,7 @@ public class MessageService {
     public PostMessageResponseDto executeAndGetMessage(MessageRequestDto message) {
         // 문장 생성
         String clovaContent = transMessageToClovaContent(message);
-        String result = postClova(message, clovaContent);
+        PostClovaResponseDto result = postClova(message, clovaContent);
 
         // 생성 문장 저장
         Message messageEntity = Message.MessageOf(message, result);
@@ -68,8 +70,11 @@ public class MessageService {
         return sb.toString();
     }
 
-    private String postClova(MessageRequestDto message, String clovaContent) {
+    private PostClovaResponseDto postClova(MessageRequestDto message, String clovaContent) {
         RestTemplate template = new RestTemplate();
+
+        // result Data
+        PostClovaResponseDto result = new PostClovaResponseDto();
 
         // request data
         ArrayList<ClovaRequestMessage> messageList = new ArrayList();
@@ -103,25 +108,29 @@ public class MessageService {
 
         String code = (String) ((LinkedHashMap)resMap.get("status")).get("code");
         String msg = (String) ((LinkedHashMap)resMap.get("status")).get("message");
-        String content = "";
+        String beforeContent = "";
+        String afterContent = "";
 
         if("20000".equals(code)) {
-            content = (String) ((LinkedHashMap)((LinkedHashMap)resMap.get("result")).get("message")).get("content");
+            /* 최초 데이터 */
+            beforeContent = (String) ((LinkedHashMap)((LinkedHashMap)resMap.get("result")).get("message")).get("content");
+            result.setResultRowData(beforeContent);
 
             /* 데이터 후처리 */
             // [축사자 이름], [대상자 이름] replace
-            content = content.replaceAll("\\[축사자 이름\\]", message.getUserName());
-            content = content.replaceAll("\\[대상자 이름\\]", message.getTargetName());
-            content = content.replaceAll("\\*","").replaceAll("축사 시작","").replaceAll("축사 종료","").replaceAll("제목:","").replaceAll("\\[","").replaceAll("\\]","");
+            afterContent = beforeContent;
+            afterContent = afterContent.replaceAll("\\[축사자 이름\\]", message.getUserName());
+            afterContent = afterContent.replaceAll("\\[대상자 이름\\]", message.getTargetName());
+            afterContent = afterContent.replaceAll("\\*","").replaceAll("축사 시작","").replaceAll("축사 종료","").replaceAll("제목:","").replaceAll("\\[","").replaceAll("\\]","");
+            result.setResultData(afterContent);
 
-            log.info("축사 응답 데이터: " + content);
+            log.info("축사 최종 응답 데이터: " + afterContent);
 
         }else {
-            content = "문장을 열심히 학습중이예요. 다음에 다시 시도 해주세요.";
-            log.info("NCP error code: " + code + ", message: " + msg);
+            throw new BaseException("[clovaX error] code:" + code + ", message: " + msg);
         }
 
-        return content;
+        return result;
     }
 
     private void insertMessage(Message message) {
