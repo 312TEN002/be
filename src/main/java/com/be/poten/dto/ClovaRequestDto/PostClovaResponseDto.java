@@ -7,5 +7,6 @@ public class PostClovaResponseDto {
 
     private String resultData;
     private String resultRowData;
+    private String clovaContent;
 
 }

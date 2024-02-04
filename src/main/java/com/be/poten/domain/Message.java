@@ -14,11 +14,12 @@ public class Message {
     private String messageId;
     private String userId;
     private String paramData;
+    private String paramClovaData;
     private String resultData;
     private String resultRowData;
     private String isRenew;
 
     public static Message MessageOf(MessageRequestDto message, PostClovaResponseDto result) {
-        return new Message(null,null, JsonUtils.toJson(message), result.getResultData(), result.getResultRowData(), StringUtils.convertToDatabaseColumn(message.getIsRenew()));
+        return new Message(null,null, JsonUtils.toJson(message), result.getClovaContent(), result.getResultData(), result.getResultRowData(), StringUtils.convertToDatabaseColumn(message.getIsRenew()));
     }
 }

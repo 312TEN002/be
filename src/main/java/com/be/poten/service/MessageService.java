@@ -64,7 +64,7 @@ public class MessageService {
         sb.append("\n- 축사에 들어갈 스토리텔링: " + message.getStory());
         sb.append("\n- 말투: " + message.getSpeechType());
         sb.append("\n- 마지막으로 해주고 싶은 말: " + message.getLastComment());
-        sb.append("\n- 축사 진행 시간: " + message.getMinute());
+        sb.append("\n- 축사 진행 시간: " + message.getMinute() + "분");
         sb.append("\n- 최대 글자수: " + "1000자");
 
         return sb.toString();
@@ -75,6 +75,7 @@ public class MessageService {
 
         // result Data
         PostClovaResponseDto result = new PostClovaResponseDto();
+        result.setClovaContent(clovaContent);
 
         // request data
         ArrayList<ClovaRequestMessage> messageList = new ArrayList();

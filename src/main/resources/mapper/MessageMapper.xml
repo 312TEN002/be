@@ -3,8 +3,8 @@
 <mapper namespace="com.be.poten.mapper.MessageMapper">
 
     <insert id="insertMessage" parameterType="com.be.poten.domain.Message" useGeneratedKeys="true" keyProperty="messageId" keyColumn="message_id">
-        insert into message (user_id, param_data, result_data, result_row_data, is_renew)
-        values (null, #{paramData}, #{resultData}, #{resultRowData}, #{isRenew});
+        insert into message (user_id, param_data, param_clova_data, result_data, result_row_data, is_renew)
+        values (null, #{paramData}, #{paramClovaData}, #{resultData}, #{resultRowData}, #{isRenew});
     </insert>
 
     <select id="getMessage" resultType="com.be.poten.dto.message.GetMessageResponseDto">
