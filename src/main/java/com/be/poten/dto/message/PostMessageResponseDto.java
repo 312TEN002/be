@@ -9,9 +9,10 @@ import lombok.Data;
 public class PostMessageResponseDto {
 
     private String messageId;
+    private String resultData;
 
     public static PostMessageResponseDto PostMessageResponseDtoOf(Message message) {
-        return new PostMessageResponseDto(message.getMessageId());
+        return new PostMessageResponseDto(message.getMessageId(), message.getResultData());
     }
     
 }
