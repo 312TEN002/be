@@ -2,6 +2,7 @@ package com.be.poten.domain;
 
 import com.be.poten.dto.message.MessageRequestDto;
 import com.be.poten.utils.JsonUtils;
+import com.be.poten.utils.StringUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -13,8 +14,9 @@ public class Message {
     private String userId;
     private String paramData;
     private String resultData;
+    private String isRenew;
 
     public static Message MessageOf(MessageRequestDto message, String result) {
-        return new Message(null,null, JsonUtils.toJson(message), result);
+        return new Message(null,null, JsonUtils.toJson(message), result, StringUtils.convertToDatabaseColumn(message.getIsRenew()));
     }
 }

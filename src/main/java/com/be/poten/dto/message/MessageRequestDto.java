@@ -15,4 +15,5 @@ public class MessageRequestDto {
     private String lastComment;
     private String minute;
 
+    private Boolean isRenew; // 재생성 여부
 }
