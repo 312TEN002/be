@@ -4,6 +4,7 @@ import com.be.poten.common.response.ApiResponse;
 import com.be.poten.dto.message.GetMessageResponseDto;
 import com.be.poten.dto.message.MessageRequestDto;
 import com.be.poten.dto.message.PostMessageResponseDto;
+import com.be.poten.dto.message.UpdateMessageRequestDto;
 import com.be.poten.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +32,11 @@ public class MessageController {
     @GetMapping(value = "/api/message/{messageId}")
     public ApiResponse<GetMessageResponseDto> getMessage(@PathVariable String messageId) {
         return ApiResponse.success(messageService.getMessage(messageId));
+    }
+
+    @PutMapping(value = "/api/message")
+    public ApiResponse<?> updateMessage(@RequestBody UpdateMessageRequestDto message) {
+        messageService.updateMessage(message);
+        return ApiResponse.success();
     }
 }

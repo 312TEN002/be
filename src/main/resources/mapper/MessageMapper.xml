@@ -15,4 +15,11 @@
         where message_id = #{messageId};
     </select>
 
+    <update id="updateMessage" parameterType="com.be.poten.domain.Message">
+        update message
+        set is_update = #{isUpdate},
+            result_update_data = #{resultUpdateData}
+        where message_id = #{messageId};
+    </update>
+
 </mapper>

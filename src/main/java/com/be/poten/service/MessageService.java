@@ -9,6 +9,7 @@ import com.be.poten.dto.ClovaRequestDto.PostClovaResponseDto;
 import com.be.poten.dto.message.MessageRequestDto;
 import com.be.poten.dto.message.GetMessageResponseDto;
 import com.be.poten.dto.message.PostMessageResponseDto;
+import com.be.poten.dto.message.UpdateMessageRequestDto;
 import com.be.poten.mapper.MessageMapper;
 import com.be.poten.utils.SignitureUtils;
 import lombok.RequiredArgsConstructor;
@@ -192,5 +193,13 @@ public class MessageService {
 
     public GetMessageResponseDto getMessage(String messageId) {
         return messageMapper.getMessage(messageId);
+    }
+
+    /**
+     * 메세지 수정 이력 저장
+     */
+    @Transactional
+    public void updateMessage(UpdateMessageRequestDto message) {
+        messageMapper.updateMessage(Message.MessageOf(message));
     }
 }
