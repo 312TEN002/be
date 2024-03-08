@@ -121,8 +121,14 @@ public class MessageService {
             /* 데이터 후처리 */
             // [축사자 이름], [대상자 이름], 대상자 replace
             afterContent = beforeContent;
-            afterContent = afterContent.replaceAll("\\[축사자 이름\\]", message.getUserName());
-            afterContent = afterContent.replaceAll("\\[대상자 이름\\]", message.getTargetName()).replaceAll("대상자", message.getTargetName());
+
+            // 축사자 이름
+            afterContent = afterContent.replaceAll("축사자 이름", message.getUserName());
+            // 대상자 이름
+            afterContent = afterContent.replaceAll("대상자 이름", message.getTargetName()).replaceAll("대상자", message.getTargetName());
+            afterContent = ("신랑".equals(message.getTargetType())) ? afterContent.replaceAll("신랑 이름", message.getTargetName()) : afterContent.replaceAll("신부 이름", message.getTargetName());
+
+            // 제거 처리 (*, 축사 시작, 축사 종료, 축사 끝, 제목:, [, ], 앞뒤공백)
             afterContent = afterContent.replaceAll("\\*","").replaceAll("축사 시작","").replaceAll("축사 종료","").replaceAll("축사 끝","").replaceAll("제목:","").replaceAll("\\[","").replaceAll("\\]","").trim();
             result.setResultData(afterContent);
 
