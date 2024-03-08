@@ -119,11 +119,11 @@ public class MessageService {
             result.setResultRowData(beforeContent);
 
             /* 데이터 후처리 */
-            // [축사자 이름], [대상자 이름] replace
+            // [축사자 이름], [대상자 이름], 대상자 replace
             afterContent = beforeContent;
             afterContent = afterContent.replaceAll("\\[축사자 이름\\]", message.getUserName());
-            afterContent = afterContent.replaceAll("\\[대상자 이름\\]", message.getTargetName());
-            afterContent = afterContent.replaceAll("\\*","").replaceAll("축사 시작","").replaceAll("축사 종료","").replaceAll("제목:","").replaceAll("\\[","").replaceAll("\\]","");
+            afterContent = afterContent.replaceAll("\\[대상자 이름\\]", message.getTargetName()).replaceAll("대상자", message.getTargetName());
+            afterContent = afterContent.replaceAll("\\*","").replaceAll("축사 시작","").replaceAll("축사 종료","").replaceAll("축사 끝","").replaceAll("제목:","").replaceAll("\\[","").replaceAll("\\]","").trim();
             result.setResultData(afterContent);
 
             log.info("축사 최종 응답 데이터: " + afterContent);
