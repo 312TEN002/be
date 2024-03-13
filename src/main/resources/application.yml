@@ -1,30 +1,5 @@
-# server
-server:
-#   port: 8080
-  port: 443 # SSL
-  ssl:
-    enabled: true
-    key-store: classpath:keystore.p12
-    key-store-type: PKCS12
-    key-store-password: ENC(YCvDgaLhZx6D8nU3kNaAt2E11YkBlhnX)
-
-# jasypt (암호화)
-jasypt:
-  encryptor:
-    bean: jasyptStringEncryptor
-    password: potenday312!
-
 spring:
   profiles:
-    active: dev # 기본적으로 활성화할 profile 설정
-
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ENC(dwrBT/Me+rqnOwez4iZQNg==)
-    password: ENC(ex/gK8KIXy5P8JRA4ke4WPQUR9rerb7P)
-    url: ENC(a0aurpriP5ZBdp1sUibphnO8zLG8SqgNbV05OPU9JVPh3KcwH1jm5YS9fIgVeL7Yt4etl0PY6szmhMljHZ7BmE/unAQ3zGQ4F5b3qXjI3Ap+BCtOfHhhJ0SSuNMfEsSwSWMJuo+6EcI=)
-
-# Mybatis
-mybatis:
-  type-aliases-package: com.be.poten.domain
-  mapper-locations: mapper/*.xml
+    group:
+      dev: dev
+      prd: prd

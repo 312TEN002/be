@@ -4,7 +4,7 @@ server:
   port: 443 # SSL
   ssl:
     enabled: true
-    key-store: classpath:keystore-prd.p12
+    key-store: classpath:keystore.p12
     key-store-type: PKCS12
     key-store-password: ENC(YCvDgaLhZx6D8nU3kNaAt2E11YkBlhnX)
 
@@ -17,7 +17,7 @@ jasypt:
 spring:
   config:
     activate:
-      on-profile: prd
+      on-profile: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ENC(dwrBT/Me+rqnOwez4iZQNg==)
