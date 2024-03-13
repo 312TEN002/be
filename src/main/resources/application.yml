@@ -19,9 +19,9 @@ spring:
 #    location: local
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ENC(gHQzrIJXfXwoodtALWuOnA==)
-    password: ENC(KuRQ0J0w0qGbqn8peLQaUCLMX/4ndUJ3)
-    url: ENC(xwD1pix8YBdaKIRFNRw7mCXiwnSixb9AfggGL/MU6h25mpjg8XI0EfT7MGDiUCkqkG0mynN4xBxlJR28N+U5PyW2uzPhkiW5g8y89xnzmy0cLQuwrbmxh3Lhe0KICd6lU4imeSiBruHjOXTpvKUFrQ==)
+    username: ENC(dwrBT/Me+rqnOwez4iZQNg==)
+    password: ENC(ex/gK8KIXy5P8JRA4ke4WPQUR9rerb7P)
+    url: ENC(a0aurpriP5ZBdp1sUibphnO8zLG8SqgNbV05OPU9JVPh3KcwH1jm5YS9fIgVeL7Yt4etl0PY6szmhMljHZ7BmE/unAQ3zGQ4F5b3qXjI3Ap+BCtOfHhhJ0SSuNMfEsSwSWMJuo+6EcI=)
 
 # Mybatis
 mybatis:
