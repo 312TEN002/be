@@ -1,0 +1,39 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
+
+name: bloom-be ci/cd prd
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+    - name: SSH build & deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{secrets.ACTION_SERVER_HOST}}
+        username: ${{secrets.ACTION_SERVER_USERNAME}}
+        password: ${{secrets.ACTION_SERVER_PASSWORD}}
+        port: ${{secrets.ACTION_SERVER_PORT_PRD}}
+        script: |
+          cd /root/app/bloom-be
+          git pull origin main
+          ./gradlew build
+          cd /root/app/bloom-be/build/libs
+          fuser -k 443/tcp
+          nohup java -jar -Dspring.profiles.active=prd /root/app/bloom-be/build/libs/poten-0.0.1-SNAPSHOT.jar 1>/dev/null 2>&1 &
+          
+
