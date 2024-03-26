@@ -30,7 +30,7 @@ jobs:
         port: ${{secrets.ACTION_SERVER_PORT_DEV}}
         script: |
           cd /root/app/bloom-be
-          git pull origin main
+          git pull origin develop
           ./gradlew build
           cd /root/app/bloom-be/build/libs
           fuser -k 443/tcp
