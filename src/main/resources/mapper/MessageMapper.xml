@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.be.poten.mapper.MessageMapper">
+<mapper namespace="com.be.bloom.mapper.MessageMapper">
 
-    <insert id="insertMessage" parameterType="com.be.poten.domain.Message" useGeneratedKeys="true" keyProperty="messageId" keyColumn="message_id">
+    <insert id="insertMessage" parameterType="com.be.bloom.domain.Message" useGeneratedKeys="true" keyProperty="messageId" keyColumn="message_id">
         insert into message (user_id, param_data, param_clova_data, result_data, result_row_data, is_renew)
         values (null, #{paramData}, #{paramClovaData}, #{resultData}, #{resultRowData}, #{isRenew});
     </insert>
 
-    <select id="getMessage" resultType="com.be.poten.dto.message.GetMessageResponseDto">
+    <select id="getMessage" resultType="com.be.bloom.dto.message.GetMessageResponseDto">
         select message_id as messageId,
                reg_date as regDate,
                if(is_update = 'Y', result_update_data, result_data) as resultData
@@ -15,7 +15,7 @@
         where message_id = #{messageId};
     </select>
 
-    <update id="updateMessage" parameterType="com.be.poten.domain.Message">
+    <update id="updateMessage" parameterType="com.be.bloom.domain.Message">
         update message
         set is_update = #{isUpdate},
             result_update_data = #{resultUpdateData}

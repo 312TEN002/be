@@ -26,5 +26,5 @@ spring:
 
 # Mybatis
 mybatis:
-  type-aliases-package: com.be.poten.domain
+  type-aliases-package: com.be.bloom.domain
   mapper-locations: mapper/*.xml
