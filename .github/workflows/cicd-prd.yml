@@ -34,6 +34,6 @@ jobs:
           ./gradlew build
           cd /root/app/bloom-be/build/libs
           fuser -k 443/tcp
-          nohup java -jar -Dspring.profiles.active=prd /root/app/bloom-be/build/libs/poten-0.0.1-SNAPSHOT.jar 1>/dev/null 2>&1 &
+          nohup java -jar -Dspring.profiles.active=prd /root/app/bloom-be/build/libs/bloom-0.0.1-SNAPSHOT.jar 1>/dev/null 2>&1 &
           
 
