@@ -10,7 +10,8 @@
     <select id="getMessage" resultType="com.be.bloom.dto.message.GetMessageResponseDto">
         select message_id as messageId,
                reg_date as regDate,
-               if(is_update = 'Y', result_update_data, result_data) as resultData
+               if(is_update = 'Y', result_update_data, result_data) as resultData,
+               JSON_UNQUOTE(JSON_EXTRACT(param_data, '$.userName')) as userName
         from message
         where message_id = #{messageId};
     </select>
