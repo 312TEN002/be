@@ -6,6 +6,7 @@ import lombok.Data;
 public class GetMessageResponseDto {
 
     private String messageId;
+    private String shareKey;
     private String regDate;
     private String resultData;
     private String userName;

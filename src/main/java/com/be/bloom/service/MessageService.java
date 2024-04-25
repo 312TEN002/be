@@ -40,7 +40,8 @@ public class MessageService {
         PostClovaResponseDto result = postClova(message, clovaContent);
 
         // 생성 문장 저장
-        Message messageEntity = Message.MessageOf(message, result);
+        String shareKey = messageMapper.getMessageShareKey();
+        Message messageEntity = Message.MessageOf(message, shareKey, result);
         insertMessage(messageEntity);
 
         // 응답
@@ -197,8 +198,22 @@ public class MessageService {
 
     }
 
+    /**
+     * 메세지 조회 (id 기준)
+     */
     public GetMessageResponseDto getMessage(String messageId) {
         return messageMapper.getMessage(messageId);
+    }
+
+    /**
+     * 메세지 조회 (공유키 기준)
+     */
+    public GetMessageResponseDto getMessageByShareKey(String shareKey) {
+        GetMessageResponseDto result = messageMapper.getMessageByShareKey(shareKey);
+        if(result == null) {
+            throw new BaseException("공유키가 존재하지 않습니다.");
+        }
+        return result;
     }
 
     /**

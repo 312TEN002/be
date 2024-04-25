@@ -23,11 +23,12 @@ public class Message {
     private String resultUpdateData;
     private String isRenew;
     private String isUpdate;
+    private String shareKey;
 
 
     /* 축사 생성 */
-    public static Message MessageOf(MessageRequestDto message, PostClovaResponseDto result) {
-        return new Message(null,null, JsonUtils.toJson(message), result.getClovaContent(), result.getResultData(), result.getResultRowData(), null, StringUtils.convertToDatabaseColumn(message.getIsRenew()), "N");
+    public static Message MessageOf(MessageRequestDto message, String shareKey, PostClovaResponseDto result) {
+        return new Message(null,null, JsonUtils.toJson(message), result.getClovaContent(), result.getResultData(), result.getResultRowData(), null, StringUtils.convertToDatabaseColumn(message.getIsRenew()), "N", shareKey);
     }
 
     /* 축사 수정 이력 저장 */

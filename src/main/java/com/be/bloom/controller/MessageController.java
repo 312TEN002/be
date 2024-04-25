@@ -34,6 +34,11 @@ public class MessageController {
         return ApiResponse.success(messageService.getMessage(messageId));
     }
 
+    @GetMapping(value = "/api/message")
+    public ApiResponse<GetMessageResponseDto> getMessageByShareKey(@RequestParam String shareKey) {
+        return ApiResponse.success(messageService.getMessageByShareKey(shareKey));
+    }
+
     @PutMapping(value = "/api/message")
     public ApiResponse<?> updateMessage(@RequestBody UpdateMessageRequestDto message) {
         messageService.updateMessage(message);

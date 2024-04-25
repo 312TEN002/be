@@ -11,5 +11,10 @@ public interface MessageMapper {
 
     GetMessageResponseDto getMessage(String messageId);
 
+    GetMessageResponseDto getMessageByShareKey(String shareKey);
+
     void updateMessage(Message message);
+
+    String getMessageShareKey();
+
 }

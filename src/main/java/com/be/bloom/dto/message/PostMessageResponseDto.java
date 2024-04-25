@@ -10,9 +10,10 @@ public class PostMessageResponseDto {
 
     private String messageId;
     private String resultData;
+    private String shareKey;
 
     public static PostMessageResponseDto PostMessageResponseDtoOf(Message message) {
-        return new PostMessageResponseDto(message.getMessageId(), message.getResultData());
+        return new PostMessageResponseDto(message.getMessageId(), message.getResultData(), message.getShareKey());
     }
     
 }
