@@ -1,5 +1,6 @@
 package com.be.bloom;
 
+import com.be.bloom.utils.SignitureUtils;
 import org.junit.jupiter.api.Test;
 
 public class MessageTest {
@@ -17,5 +18,16 @@ public class MessageTest {
         System.out.println(beforeMessage);
         System.out.println("===== after  =====");
         System.out.println(afterMessage);
+    }
+
+    @Test
+    void getNowMillisTest() {
+        System.out.println(System.currentTimeMillis());
+    }
+
+    @Test
+    void getSignitureTest() throws Exception {
+        System.out.println(System.currentTimeMillis());
+        System.out.println(SignitureUtils.makeSignature(System.currentTimeMillis()+"", "GET", "/tuning/v2/tasks", "Ob1ADGptmoTwQtwD23vu", "b2Pd4Vi4Zedus0fLXLbk8Ju4BVRqpMDKXtrkGPpP"));
     }
 }
