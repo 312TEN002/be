@@ -97,7 +97,7 @@ public class MessageService {
 
         HttpHeaders headers = new HttpHeaders();
         /* 학습 */
-        headers.set("X-NCP-CLOVASTUDIO-API-KEY", "NTA0MjU2MWZlZTcxNDJiY6LZd16S3lGRquDQ755+lODwkGu6Ue38A7hxsmmUpq4FftKdv/cXC7UAMEZCtJStq99tXgHVzmVUXKxgiuo8TS/CEdidD0bcFucaJKtw0OTKYOP8Mjh57nEIMzoDFYrt+ddcQM8UdpNQ4v3T5c8q/SJ7P/KeRKHEfnmFPlMBdBV5BkY/2hkXshroMxKBibtPTA==");
+        headers.set("X-NCP-CLOVASTUDIO-API-KEY", "NTA0MjU2MWZlZTcxNDJiYyV5UStnvBhxSgA17dI9+O9yqroI83RKeHVz4JtXgJIt");
         headers.set("X-NCP-APIGW-API-KEY", "CNRSgHB8UsB0ReR29fU3NqjG8XRfWvifgKOhu6JY");
 
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -105,7 +105,7 @@ public class MessageService {
         HttpEntity formEntity = new HttpEntity<>(clovaRequest, headers);
 
         /* 학습 */
-        String apiUrl = "https://clovastudio.stream.ntruss.com/testapp/v1/tasks/lmgwbobq/chat-completions";
+        String apiUrl = "https://clovastudio.stream.ntruss.com/testapp/v1/chat-completions/HCX-DASH-001";
 
         LinkedHashMap resMap = template.postForObject(apiUrl, formEntity, LinkedHashMap.class);
 
