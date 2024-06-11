@@ -81,7 +81,7 @@ public class MessageService {
 
         // request data
         ArrayList<ClovaRequestMessage> messageList = new ArrayList();
-        messageList.add(new ClovaRequestMessage("system", "항목을 입력하면 대상자에게 전달할 \\b결혼식 축사 문장을 추천 해드립니다.\\n(지정한 대상자의 이름과 지정한 축사자의 이름이 내용에 들어가야 함)"));
+        messageList.add(new ClovaRequestMessage("system", "항목을 입력하면 대상자에게 전달할 결혼식 축사 문장을 추천 해드립니다. (지정한 대상자의 이름과 지정한 축사자의 이름이 내용에 들어가야 함)"));
         messageList.add(new ClovaRequestMessage("user", clovaContent));
 
         ClovaRequest clovaRequest = ClovaRequest.builder()
@@ -105,7 +105,7 @@ public class MessageService {
         HttpEntity formEntity = new HttpEntity<>(clovaRequest, headers);
 
         /* 학습 */
-        String apiUrl = "https://clovastudio.stream.ntruss.com/testapp/v1/chat-completions/HCX-DASH-001";
+        String apiUrl = "https://clovastudio.stream.ntruss.com/testapp/v1/tasks/rdu0q9cj/chat-completions";
 
         LinkedHashMap resMap = template.postForObject(apiUrl, formEntity, LinkedHashMap.class);
 
